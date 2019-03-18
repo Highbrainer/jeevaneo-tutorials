@@ -1,6 +1,6 @@
 import * as demo from '../src/module.js';
 
-// Gather name, cars and greet OK in section '00 Check equality
+describe('00 Check equality', () => {
 	test('name', () => {
 		const mike = new demo.Human({name:'Mike'});
 		expect(mike.name).toBe('Mike');
@@ -18,32 +18,36 @@ import * as demo from '../src/module.js';
 		const msg = john.greet(mike);
 		expect(msg).toBe('Bonjour Mike !');
 	});
+});
 
-// put the following test into section '01 any'
+describe('01 any', () => {
 	test('creation', () => {
 		const mike = new demo.Human({name:'Mike'});
 		expect(mike.creation).toEqual(expect.any(Date));
 		expect(mike).toEqual(expect.objectContaining({creation:expect.any(Date)}));
 	});
+});
 
-// put the following test into section 02 undefined
+describe('02 undefined', () => {
 	test('no children at birth', () => {
 		const mike = new demo.Human({name:'Mike'});
 		expect(mike.children).toBeUndefined();
 		expect(mike.children).toBeFalsy();
 		expect(mike.children).not.toBeTruthy();
 	});
+});
 
-// put the following test into section'03 throw'
+describe('03 throw', () => {
 	test('modeste si seul', () => {
 		const mike = new demo.Human({name:'Mike'});
 		expect(()=>mike.greet(undefined)).toThrow();
 		expect(()=>mike.showOff(undefined)).toThrowError('modeste');
 		expect(()=>mike.showOff(undefined)).toThrowError(/.*est trop modeste/);
 	});
+});
 
 
-// put the following test into section '04 promise'
+describe('04 promise', () => {
 	test('dors bien.. ou pas', () => {
 		const mike = new demo.Human({name:'Mike'});
 		expect(mike.sleep(3)).resolves.toBe("J'ai dormi 3 secondes");
@@ -51,8 +55,9 @@ import * as demo from '../src/module.js';
 		expect(mike.sleep(-3)).rejects.toBe("Je n'arrive pas à dormir!");
 		expect(mike.sleep('cauchemar')).rejects.toBe("Je n'arrive pas à dormir!");
 	});
+});
 
-// organize the last tests into section '05 mock'
+describe('05 mock', () => {
 	test('gagne au loto', () => {
 		const mike = new demo.Human({name:'Mike'});
 		jest.spyOn(mike, "_randomDraw").mockReturnValue(1);
@@ -77,3 +82,16 @@ import * as demo from '../src/module.js';
 		expect(mSleep).toHaveBeenNthCalledWith(2,2);
 		expect(mSleep).toHaveBeenNthCalledWith(3,1);
 	});
+});
+
+describe('07 jsdom', () => {
+	test('display', () => {
+		const john = new demo.Human({name:'John', cars:["bmw", "kia"]});
+		
+		// Create a fake HTML page containing a 'truc' div.
+		// Let John display into truc
+		// Ensure that truc now has 3 children divs : cars, children and name
+		// Ensure that there are two images for the cars (IDs car0 and car1)
+				
+	});
+});
