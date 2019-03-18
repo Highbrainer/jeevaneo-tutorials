@@ -57,4 +57,17 @@ export class Human {
 		await other.sleep(1);
 		return;
 	}
+
+	display(containerId) {
+
+		let html = `<div id="name">Je suis ${this.name}</div><div id="children">Je n'ai pas d'enfant.</div><div id="cars">J'ai ${this.cars.length} voiture(s) `;
+		for  (let i =0;i<this.cars.length;i++) {
+			let car_url = (this.cars[i]==="bmw")?'https://sf2.viepratique.fr/wp-content/uploads/sites/9/2018/06/p90307459_highres-547x410.jpg':"https://cdn.auto-ies.com/catalog/product/cache/1/image/660x/17f82f742ffe127f42dca9de82fb58b1/r/i/rio-cv_4.jpg";
+			html += `<span><img id="car${i}" style="height:200px" src="${car_url}"></span>`;
+		}
+		html += `</div>`;
+
+		const container = document.getElementById(containerId);
+		container.innerHTML += html;
+	}
 }
