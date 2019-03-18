@@ -1,0 +1,63 @@
+{
+	"name": "demo-jest-core",
+	"author": "Alexandre BORGOLTZ",
+	"version": "0.0.1-0",
+	"description": "Dummy project for demo purpose",
+	"main": "dist/module.js",
+	"module": "src/module.js",
+	"browser": "dist/module.js",
+	"scripts": {
+		"clean": "rimraf dist/*",
+		"build:init": "mkdirp dist/",
+		"prepublishOnly": "eslint --ext js src/**",
+		"build:es5": "babel src -d dist",
+		"build:bundle": "browserify -s demo --debug dist/module.js > dist/bundle.js",
+		"postbuild:bundle" : "cp dist/bundle.js /mnt/c/dev/ws/ws/httpd/WebContent/demo-jest/",
+		"build": "run-s build:init clean build:es5 build:bundle",
+		"test": "jest"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.3.4",
+		"@babel/preset-env": "^7.3.4",
+		"babel-preset-env": "^1.7.0",
+		"browserify": "^16.2.3",
+		"eslint": "^5.15.1",
+		"jest": "^24.4.0",
+		"jest-fetch-mock": "^2.1.1",
+		"mkdirp": "^0.5.1",
+		"npm-run-all": "^4.1.5",
+		"rimraf": "^2.6.3"
+	},
+	"babel": {
+		"presets": [
+			[
+				"@babel/preset-env",
+				{
+					"targets": {
+						"firefox": 60,
+						"ie" : 7
+					},
+					"useBuiltIns": "usage"
+				}
+			]
+		]
+	},
+	"eslintConfig": {
+		"env": {
+			"browser": true,
+			"node": true,
+			"es6": true
+		},
+		"extends": "eslint:recommended",
+		"parserOptions": {
+			"ecmaVersion": 2018,
+			"sourceType": "module"
+		},
+		"rules": {
+			"no-mixed-spaces-and-tabs": "off",
+			"no-console": "off"
+		}
+	}
+}
