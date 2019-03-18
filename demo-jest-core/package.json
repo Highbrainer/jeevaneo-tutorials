@@ -12,7 +12,7 @@
 		"prepublishOnly": "eslint --ext js src/**",
 		"build:es5": "babel src -d dist",
 		"build:bundle": "browserify -s demo --debug dist/module.js > dist/bundle.js",
-		"postbuild:bundle" : "cp dist/bundle.js /mnt/c/dev/ws/ws/httpd/WebContent/demo-jest/",
+		"postbuild:bundle": "cp dist/bundle.js /mnt/c/dev/ws/ws/httpd/WebContent/demo-jest/",
 		"build": "run-s build:init clean build:es5 build:bundle",
 		"test": "jest"
 	},
@@ -37,7 +37,7 @@
 				{
 					"targets": {
 						"firefox": 60,
-						"ie" : 7
+						"ie": 7
 					},
 					"useBuiltIns": "usage"
 				}

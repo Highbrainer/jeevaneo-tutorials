@@ -52,7 +52,7 @@ import * as demo from '../src/module.js';
 		expect(mike.sleep('cauchemar')).rejects.toBe("Je n'arrive pas à dormir!");
 	});
 
-// organize the last two tests into section '05 mock'
+// organize the last tests into section '05 mock'
 	test('gagne au loto', () => {
 		const mike = new demo.Human({name:'Mike'});
 		jest.spyOn(mike, "_randomDraw").mockReturnValue(1);
@@ -63,4 +63,17 @@ import * as demo from '../src/module.js';
 		const mike = new demo.Human({name:'Mike'});
 		jest.spyOn(mike, "_randomDraw").mockReturnValue(0);
 		expect(mike.playTheLottery()).toBe("PERDU");
+	});
+
+        test("comptage et paramètres d'appel", async () => {
+		jest.setTimeout(10000);
+		
+		const john = new demo.Human({name:'John', cars:["bmw"]});
+		const mike = new demo.Human({name:'Mike'});
+		const mSleep = jest.spyOn(mike, 'sleep');
+		await john.hypnotize(mike);
+		expect(mSleep).toHaveBeenCalledTimes(3);
+		expect(mSleep).toHaveBeenNthCalledWith(1,3);
+		expect(mSleep).toHaveBeenNthCalledWith(2,2);
+		expect(mSleep).toHaveBeenNthCalledWith(3,1);
 	});

@@ -47,4 +47,14 @@ export class Human {
 		}
 		return "PERDU";
 	}
+
+	async hypnotize(other) {
+		if (!other) {
+			throw new Error("Paramètre de type Human obligatoire");
+		}
+		await other.sleep(3);
+                await other.sleep(2);
+		await other.sleep(1);
+		return;
+	}
 }

@@ -56,3 +56,13 @@ test('ne gagne pas au loto', () => {
 	const mike = new demo.Human({name:'Mike'});
         // Check that mike will go "PERDU" when he wins at the lottery
 });
+
+test("comptage et paramètres d'appel", async () => {
+	const john = new demo.Human({name:'John', cars:["bmw"]});
+	const mike = new demo.Human({name:'Mike'});
+	// Let john hypnotize mike then check that mike will have slept 3 times :
+	// once 3 seconds
+	// then 2 seconds
+	// then 1 second
+	// Watch out, hypnotize is an async method !
+});

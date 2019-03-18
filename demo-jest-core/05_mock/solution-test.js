@@ -58,3 +58,18 @@ test('ne gagne pas au loto', () => {
 	jest.spyOn(mike, "_randomDraw").mockReturnValue(0);
 	expect(mike.playTheLottery()).toBe("PERDU");
 });
+
+
+test("comptage et paramètres d'appel", async () => {
+	jest.setTimeout(10000);
+	
+	const john = new demo.Human({name:'John', cars:["bmw"]});
+	const mike = new demo.Human({name:'Mike'});
+	const mSleep = jest.spyOn(mike, 'sleep');
+	await john.hypnotize(mike);
+	expect(mSleep).toHaveBeenCalledTimes(3);
+	expect(mSleep).toHaveBeenNthCalledWith(1,3);
+	expect(mSleep).toHaveBeenNthCalledWith(2,2);
+	expect(mSleep).toHaveBeenNthCalledWith(3,1);
+});
+
