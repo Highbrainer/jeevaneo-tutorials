@@ -24,8 +24,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - run: npm --prefix demo-jest-core/ ci
+    - run: npm --prefix demo-jest-core/ run build --if-present
+    - run: npm --prefix demo-jest-core/ test
       env:
         CI: true
