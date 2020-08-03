@@ -16,7 +16,7 @@
 		"build": "run-s build:init clean build:es5 build:bundle",
 		"test": "jest"
 	},
-	"dependencies": {
+	"zzzdependencies": {
 		"core-js": "^3.6.5"
 	},
 	"devDependencies": {
@@ -61,5 +61,8 @@
 			"no-mixed-spaces-and-tabs": "off",
 			"no-console": "off"
 		}
+	},
+	"dependencies": {
+		"core-js": "^2.6.11"
 	}
 }
