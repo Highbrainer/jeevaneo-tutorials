@@ -70,8 +70,8 @@ describe('05 mock', () => {
 		expect(mike.playTheLottery()).toBe("PERDU");
 	});
 
-        test("comptage et paramètres d'appel", async () => {
-		jest.setTimeout(10000);
+        jest.setTimeout(10000);
+	test("comptage et paramètres d'appel", async () => {
 		
 		const john = new demo.Human({name:'John', cars:["bmw"]});
 		const mike = new demo.Human({name:'Mike'});
