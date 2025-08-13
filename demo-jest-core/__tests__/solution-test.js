@@ -41,8 +41,8 @@ describe('03 throw', () => {
 	test('modeste si seul', () => {
 		const mike = new demo.Human({name:'Mike'});
 		expect(()=>mike.greet(undefined)).toThrow();
-		expect(()=>mike.showOff(undefined)).toThrowError('modeste');
-		expect(()=>mike.showOff(undefined)).toThrowError(/.*est trop modeste/);
+		expect(()=>mike.showOff(undefined)).toThrow('modeste');
+		expect(()=>mike.showOff(undefined)).toThrow(/.*est trop modeste/);
 	});
 });
 
